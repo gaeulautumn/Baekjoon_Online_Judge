@@ -12,29 +12,29 @@ int back();
 int empty();
 
 
-int *queue;          //Å¥
+int *queue;          //í
 int _front, _back;   //
 
 
 int main() {
 
-	int N,             //¸í·ÉÀÇ ¼ö (1~10,000)
-		x,             //Å¥¿¡ »ğÀÔÇÒ Á¤¼ö
-		_size,         //Å¥ÀÇ Å©±â
-	    index = 0;     //Ãâ·Â¹è¿­ÀÇ ÀÎµ¦½º
-	int *output;       //Ãâ·ÂÇÒ ³»¿ë
+	int N,             //ëª…ë ¹ì˜ ìˆ˜ (1~10,000)
+		x,             //íì— ì‚½ì…í•  ì •ìˆ˜
+		_size,         //íì˜ í¬ê¸°
+	    index = 0;     //ì¶œë ¥ë°°ì—´ì˜ ì¸ë±ìŠ¤
+	int *output;       //ì¶œë ¥í•  ë‚´ìš©
 
-	char command[10];     //¸í·É¾î
+	char command[10];     //ëª…ë ¹ì–´
 
-	scanf("%d", &N);   //¸í·É¾î °¹¼ö ÀÔ·Â¹ŞÀ½
-	if (N < 1 || N>10000)return;  //¿¹¿Ü¹üÀ§Ã³¸®
+	scanf("%d", &N);   //ëª…ë ¹ì–´ ê°¯ìˆ˜ ì…ë ¥ë°›ìŒ
+	if (N < 1 || N > 10000)return;  //ì˜ˆì™¸ë²”ìœ„ì²˜ë¦¬
 
 	_size = N;
-	init(_size);       //Å¥ ÃÊ±âÈ­(Å©±â´Â ¸í·É¾î °¹¼ö¸¸Å­)
-	output = (int*)malloc(sizeof(int)*_size);  //Ãâ·Â¹è¿­ ÃÊ±âÈ­
+	init(_size);       //í ì´ˆê¸°í™”(í¬ê¸°ëŠ” ëª…ë ¹ì–´ ê°¯ìˆ˜ë§Œí¼)
+	output = (int*)malloc(sizeof(int)*_size);  //ì¶œë ¥ë°°ì—´ ì´ˆê¸°í™”
 
 	while (N--) {
-		scanf("%s", command);    //¸í·É¾î ÀĞ±â
+		scanf("%s", command);    //ëª…ë ¹ì–´ ì½ê¸°
 
 		if (strcmp(command, "push") == 0) {    //push X
 			scanf("%d", &x);
@@ -72,7 +72,7 @@ void init(int _size) {
 
 void push(int _size, int x) {
 	if (_back == _size) {
-		//Å¥°¡ ²ËÃ¡À½
+		//íê°€ ê½‰ì°¼ìŒ
 		return;
 	}
 
@@ -80,26 +80,25 @@ void push(int _size, int x) {
 }
 
 int pop() {
-	if (empty()) return -1;  //Å¥°¡ºñ¾îÀÖÀ¸¸é -1 Ãâ·Â
-
-	return queue[_front--];  //°¡Àå¾Õ¿¡ÀÖ´Â ¿ø¼Ò Ãâ·Â
+	if (empty()) return -1;  //íê°€ë¹„ì–´ìˆìœ¼ë©´ -1 ì¶œë ¥
+	return queue[_front++];  //ê°€ì¥ì•ì—ìˆëŠ” ì›ì†Œ ì¶œë ¥
 }
 
 int size() {
-	return (_back - _front); //Å¥¿¡ µé¾îÀÖ´Â ¿ø¼ÒÀÇ °¹¼ö
+	return (_back - _front); //íì— ë“¤ì–´ìˆëŠ” ì›ì†Œì˜ ê°¯ìˆ˜
 }
 
 int front() {
-	if (empty()) return;
-	return queue[_front];    //Ã¹¹øÂ° ¿ø¼Ò
+	if (empty()) return -1;
+	return queue[_front];    //ì²«ë²ˆì§¸ ì›ì†Œ
 }
 
 int back() {
-	if (empty()) return;
-	return queue[_back - 1]; //¸¶Áö¸· ¿ø¼Ò
+	if (empty()) return -1;
+	return queue[_back - 1]; //ë§ˆì§€ë§‰ ì›ì†Œ
 }
 
 int empty() {
-	if (_front == _back) return 1;  //Å¥°¡ºñ¾îÀÖÀ¸¸é 1 Ãâ·Â
-	else return 0;                  //¾Æ´Ï¸é 0 Ãâ·Â
+	if (_front == _back) return 1;  //íê°€ë¹„ì–´ìˆìœ¼ë©´ 1 ì¶œë ¥
+	else return 0;                  //ì•„ë‹ˆë©´ 0 ì¶œë ¥
 }
