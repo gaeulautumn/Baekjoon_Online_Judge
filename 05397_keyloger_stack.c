@@ -31,7 +31,6 @@ int main() {
 				break;
 			}//end switch
 		}//end for
-
 		while (top_2 > -1) stack_1[++top_1] = stack_2[top_2--];	
 		stack_1[top_1+1] = 0;  
 		puts(stack_1);
